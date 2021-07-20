@@ -16,7 +16,7 @@
           "containerPort": 80,
           "envVariables": {
             "DB_HOST": "{{env.DB_IP}}",
-            "DB_PORT": "{env.DB_PORT}}",
+            "DB_PORT": "{{env.DB_PORT}}",
             "DB_NAME": "tcb_limesurvey",
             "DB_USERNAME": "root",
             "DB_PASSWORD": "{{env.MYSQL_PASSWORD}}",
