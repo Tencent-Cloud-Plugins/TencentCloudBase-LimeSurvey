@@ -1,0 +1,66 @@
+{
+  "version": "2.0",
+  "envId": "{{env.ENV_ID}}",
+  "framework": {
+    "name": "LimeSurvey",
+    "plugins": {
+      "client": {
+        "use": "@cloudbase/framework-plugin-container",
+        "inputs": {
+          "serviceName": "limesurvey",
+          "servicePath": "/",
+          "uploadType": "image",
+          "imageInfo": {
+            "imageUrl": "ccr.ccs.tencentyun.com/tcbimages/limesurvey-tcb:4.6.3"
+          },
+          "containerPort": 80,
+          "envVariables": {
+            "DB_HOST": "{{env.DB_IP}}",
+            "DB_PORT": "{env.DB_PORT}}",
+            "DB_NAME": "tcb_limesurvey",
+            "DB_USERNAME": "root",
+            "DB_PASSWORD": "{{env.MYSQL_PASSWORD}}",
+            "PUBLIC_URL": "https://${TcbHttpServiceDefaultDomain}",
+            "ADMIN_USER": "{{env.ADMIN_USER}}",
+            "ADMIN_PASSWORD": "{{env.ADMIN_PASSWORD}}",
+            "TCB_NOT_SHOW_CYNOS_DB": "${Outputs.limesurvey.Properties.InstanceId}"
+          },
+          "initialDelaySeconds": 15,
+          "volumeMounts": {
+            "/var/www/html/upload/surveys": "limesurvey-cfs"
+          }
+        }
+      }
+    },
+    "requirement": {
+      "addons": [
+        {
+          "type": "CynosDB",
+          "name": "limesurvey",
+          "envMap": {
+            "IP": "DB_IP",
+            "PORT": "DB_PORT",
+            "USERNAME": "MYSQL_USERNAME",
+            "PASSWORD": "MYSQL_PASSWORD"
+          }
+        },
+        {
+          "type": "CFS",
+          "name": "limesurvey-cfs"
+        }
+      ],
+      "environment": {
+        "ADMIN_USER": {
+          "description": "用户账号",
+          "required": true,
+          "default": "admin"
+        },
+        "ADMIN_PASSWORD": {
+          "description": "用户密码",
+          "required": true,
+          "default": "admin@123"
+        }
+      }
+    }
+  }
+}
