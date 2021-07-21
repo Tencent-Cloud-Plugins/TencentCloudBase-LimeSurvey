@@ -20,7 +20,7 @@
             "DB_NAME": "tcb_limesurvey",
             "DB_USERNAME": "root",
             "DB_PASSWORD": "{{env.MYSQL_PASSWORD}}",
-            "PUBLIC_URL": "https://${TcbHttpServiceDefaultDomain}",
+            "BASE_URL": "https://${TcbHttpServiceDefaultDomain}",
             "ADMIN_USER": "{{env.ADMIN_USER}}",
             "ADMIN_PASSWORD": "{{env.ADMIN_PASSWORD}}",
             "TCB_NOT_SHOW_CYNOS_DB": "${Outputs.limesurvey.Properties.InstanceId}"
