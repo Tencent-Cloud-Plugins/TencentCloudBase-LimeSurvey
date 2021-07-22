@@ -18,7 +18,6 @@ Limesurvey 是排名第一的开源调查软件，可以帮助您更好地了解
 - `DB_NAME`: 数据库名称
 - `DB_USERNAME`: 数据库用户名
 - `DB_PASSWORD`：数据库密码
-- `PUBLIC_URL`：静态资源路径
 - `ADMIN_USER`：应用用户账号
 - `ADMIN_PASSWORD`：应用用户密码
 
